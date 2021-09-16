@@ -9,7 +9,6 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User as AuthUser
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import *
-from time import gmtime, strftime
 import datetime
 
 
@@ -17,12 +16,14 @@ class Overview(View):
     template = 'Overview.html'
 
     def get(self, request):
+        # pulling current data out of database
         la1 = MachineStatus.objects.filter(machineID='1').latest('id')
         la2 = MachineStatus.objects.filter(machineID='2').latest('id')
         la4 = MachineStatus.objects.filter(machineID='3').latest('id')
         ct = MachineStatus.objects.filter(machineID='4').latest('id')
         brachy = MachineStatus.objects.filter(machineID='5').latest('id')
 
+        # transferring data to templates
         return render(request, self.template,
                       context={
                           'LA1_status': la1.Status,
@@ -86,6 +87,7 @@ class Status(LoginRequiredMixin, View):
         all_rows = MachineStatus.objects.filter(machineID=machine_info.id)
         most_recent = MachineStatus.objects.filter(machineID=machine_info.id).latest('id')
 
+        # array reversed so displayed in template table correctly
         reversed_array = reversed(all_rows)
 
         if machine == 'LA1':
@@ -126,7 +128,6 @@ class LoggingOut(View):
 class Update(View):
     template = 'UpdateStatus.html'
     time = str(datetime.datetime.now())[0:19]
-    # str(strftime("%d-%m-%Y %H:%M:%S", gmtime()))
 
     def get(self, request):
         currentUsersName = request.session.get('currentUsersName')
