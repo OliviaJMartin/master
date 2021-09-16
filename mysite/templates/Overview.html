@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'overviewStyle.css' %}">
+    <title>Machine Overview</title>
+</head>
+
+<body>
+    <div class="titleContainer"> <!-- title and brief explanation of what to do -->
+        <h1>Machine Overview <br></h1>
+        <text>
+            Click on a machine icon to log in and update status.
+        </text>
+    </div>
+    <a href="{% url 'login' machine='LA1' %}" name = "LA1" onclick="return set_machine_choice('LA1');">
+        <div class="machineContainer"> <!-- overview of LA1 current status -->
+            <h1>LA1</h1>
+            <div class="imageContainer">
+                <br><br><br>
+                <img src="{% static 'Images/Linac.jpg' %}" alt="Linac">
+            </div>
+            <br>
+             <!-- conditional statement changing colours of circle div -->
+             {% if LA1_status == "Fully Serviceable (Clinical)" %}
+             <div class="circle" style="background-color: green"></div>
+             {% elif LA1_status == "Clinical with limitations" %}
+             <div class="circle" style="background-color: orange"></div>
+             {% elif LA1_status == "On Service/PMI" %}
+             <div class="circle" style="background-color: blue"></div>
+             {% else %}
+             <div class="circle" style="background-color: red"></div>
+             {% endif %}
+            <br>
+
+            <!-- LA1's information from dictionary-->
+            <text>
+                <br><br>
+                Status: {{LA1_status}}
+                <br><br>
+                Last reported: {{LA1_time}}
+                <br><br>
+                Reported by: {{LA1_user}}
+            </text>
+        </div>
+    </a>
+
+     <a href="{% url 'login' machine='LA2' %}" name = "LA2" onclick="return set_machine_choice('LA2');">
+        <div class="machineContainer" id="formLA2"> <!-- overview of LA2 current status -->
+            <h1>LA2</h1>
+            <div class="imageContainer" >
+                <br><br><br>
+                <img src="{% static 'Images/Linac.jpg' %}" alt="Linac">
+            </div>
+            <br>
+            <!-- conditional statement changing colours of circle div -->
+             {% if LA2_status == "Fully Serviceable (Clinical)" %}
+             <div class="circle" style="background-color: green"></div>
+             {% elif LA2_status == "Clinical with limitations" %}
+             <div class="circle" style="background-color: orange"></div>
+             {% elif LA2_status == "On Service/PMI" %}
+             <div class="circle" style="background-color: blue"></div>
+             {% else %}
+             <div class="circle" style="background-color: red"></div>
+             {% endif %}
+            <br>
+
+            <!-- LA2's information from dictionary-->
+            <text>
+                <br><br>
+                Status: {{LA2_status}}
+                <br><br>
+                Last reported: {{LA2_time}}
+                <br><br>
+                Reported by: {{LA2_user}}
+            </text>
+        </div>
+    </a>
+
+     <a href="{% url 'login' machine='LA4' %}" name = "LA4" onclick="return set_machine_choice('LA4');">
+        <div class="machineContainer" id="formLA4"> <!-- overview of LA4 current status -->
+            <h1>LA4</h1>
+            <div class="imageContainer">
+                <br><br><br>
+                <img src="{% static 'Images/Linac.jpg' %}" alt="Linac">
+            </div>
+            <br>
+             <!-- conditional statement changing colours of circle div -->
+             {% if LA4_status == "Fully Serviceable (Clinical)" %}
+             <div class="circle" style="background-color: green"></div>
+             {% elif LA4_status == "Clinical with limitations" %}
+             <div class="circle" style="background-color: orange"></div>
+             {% elif LA4_status == "On Service/PMI" %}
+             <div class="circle" style="background-color: blue"></div>
+             {% else %}
+             <div class="circle" style="background-color: red"></div>
+             {% endif %}
+            <br>
+
+            <!-- LA4's information from dictionary-->
+            <text>
+                <br><br>
+                Status: {{LA4_status}}
+                <br><br>
+                Last reported: {{LA4_time}}
+                <br><br>
+                Reported by: {{LA4_user}}
+            </text>
+        </div>
+    </a>
+
+     <a href="{% url 'login' machine='CT' %}" name = "CT" onclick="return set_machine_choice('CT');">
+         <div class="machineContainer" id="formCT"> <!-- overview of CT current status -->
+             <h1>CT</h1>
+             <div class="imageContainer">
+                 <br><br><br><br><br>
+                 <img src="{% static 'Images/CT.jpg' %}" alt="CT">
+             </div>
+             <br>
+             <!-- conditional statement changing colours of circle div -->
+             {% if CT_status == "Fully Serviceable (Clinical)"%}
+             <div class="circle" style="background-color: green"></div>
+             {% elif CT_status == "Clinical with limitations" %}
+             <div class="circle" style="background-color: orange"></div>
+             {% elif CT_status == "On Service/PMI" %}
+             <div class="circle" style="background-color: blue"></div>
+             {% else %}
+             <div class="circle" style="background-color: red"></div>
+             {% endif %}
+
+             <br>
+
+             <!-- CT's information from dictionary-->
+             <text>
+                 <br><br>
+                Status: {{CT_status}}
+                <br><br>
+                Last reported: {{CT_time}}
+                <br><br>
+                Reported by: {{CT_user}}
+            </text>
+        </div>
+    </a>
+
+     <a href="{% url 'login' machine='Brachytherapy' %}" name = "Brachy" onclick="return set_machine_choice('Brachytherapy');">
+        <div class="machineContainer" id="formBrachy"> <!-- overview of Brachytherapy current status -->
+            <h1>Brachytherapy</h1>
+            <div class="imageContainer">
+                <br><br>
+                <img src="{% static 'Images/Brachy.jpg' %}" alt="Brachy">
+            </div>
+            <br>
+            <!-- conditional statement changing colours of circle div -->
+             {% if Brachy_status == "Fully Serviceable (Clinical)" %}
+             <div class="circle" style="background-color: green"></div>
+             {% elif Brachy_status == "Clinical with limitations" %}
+             <div class="circle" style="background-color: orange"></div>
+             {% elif Brachy_status == "On Service/PMI" %}
+             <div class="circle" style="background-color: blue"></div>
+             {% else %}
+             <div class="circle" style="background-color: red"></div>
+             {% endif %}
+            <br>
+
+            <!-- Brachy's information from dictionary-->
+            <text>
+                <br><br>
+                Status: {{Brachy_status}}
+                <br><br>
+                Last reported: {{Brachy_time}}
+                <br><br>
+                Reported by: {{Brachy_user}}
+            </text>
+        </div>
+    </a>
+</body>
+</html>

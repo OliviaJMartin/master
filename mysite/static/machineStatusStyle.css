@@ -1,0 +1,144 @@
+body {
+    margin:auto;
+    background-color: #00004d; /* dark blue */
+    color: white;
+    text-align: center;
+}
+
+.infoContainer {
+    width:45%;
+    height: 100px;
+    vertical-align:central;
+    display:inline-block; /* display all containers in a row */
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    font-size: 50px;
+}
+
+text{font-size: 20px;}
+
+.statusCircle {
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background: green;
+    border-radius: 50%; /* making it a circle */
+}
+
+.tableBox {
+    overflow-x:auto;
+    height: 300px;
+}
+
+.handoverTable {
+    width: 90%;
+    Height: 300px;
+    border-collapse: collapse;
+    margin:auto;
+    min-width: 500px;
+    font-size: 20px;
+}
+
+.handoverTable thead tr { /* tr = table row*/
+    background-color: rgb(75,75,75); /* grey */
+    color:white;
+    text-align:center;
+    height: 50px;
+}
+
+/* th = table header */
+.handoverTable th{
+    padding: 12px 15px;
+    position: sticky;
+}
+
+/*td = table data*/
+.table td {
+    padding: 12px 15px;
+    height:40px;
+    overflow:hidden;
+}
+
+.handoverTable tbody tr {
+    border-bottom: 1px solid #a9a9a9; /*grey*/
+    background-color: white;
+    color: black;
+    text-align: center;
+    height: 35px;
+    column-rule: 4px double #ff00ff; /*grey*/
+}
+
+.handoverTable tbody tr:nth-child(1) {border: 3px solid red;}  /* light grey */
+
+.BTNContainer {
+    width: 50%;
+    height: 100px;
+    vertical-align:center;
+    display:inline-block;
+    padding: 20px;
+    text-align: center;
+}
+
+button[type=submit] {
+    align: center;
+    position: relative;
+    padding: 15px 15px;
+    background: white;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+    color: black;
+    width: 30%;
+    min-width: 250px;
+    margin-left: auto; /* centering */
+    margin-right: auto; /* centering */
+    font-size: 20px;
+    display: inline-block;
+}
+
+button[type=submit]:hover {background-color:#a6a6a6;} /* light grey */
+
+.modal {
+    text-align: center;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 30%;
+    height: 35%;
+    padding: 5%;
+    transform: translate(75%, 10%);
+    overflow: auto; /* adding scroll if window becomes too small */
+    background-color: #00004d; /* dark blue */
+    font-size: 25px;
+    border: 1px solid white;
+}
+
+.model-content {
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid white;
+    width: 80%;
+}
+
+.close{
+    color: #aaa; /* grey */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

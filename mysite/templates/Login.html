@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'loginStyle.css' %}">
+</head>
+
+<body>
+    <form method="POST">  <!-- Form to login -->
+        {% csrf_token %}
+        <div class="login-container">
+            <h1>{{Machine_Name}}</h1> <!-- output the name of machine chosen -->
+            <label><b>Username: </b></label>
+            <br>
+            {{ form.username }} <!-- input box for username -->
+            <br>
+            <label><b>Password: </b></label>
+            <br>
+            {{ form.password }} <!-- input box for password -->
+            <h2></h2>
+            <a href="{% url 'machineStatus' %}" onclick="return set_user();"><button type="Submit" id="enter">Login</button></a>
+        </div>
+    </form>
+</body>
+
+</html>

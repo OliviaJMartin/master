@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Updating Status</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'updateStatusStyle.css' %}">
+</head>
+
+<body>
+  <h1>Status reporting:</h1>
+  <br><br>
+  <div class="containContainers">
+    <!-- left-sided div for inputs -->
+    <div class="inputContainer">
+      <form method="POST">
+        {% csrf_token %}
+        <text> <b> Reporting As: {{ User }}</b> </text> <!-- to take values from database -->
+        <br>
+        <text> <b> Reporting for: {{ Machine_Name }}</b> </text>
+        <br> <br>
+
+        <text>Status:</text>
+        <br>
+          <!-- drop-down box for machine status options -->
+         <select name="status" id="status">
+            <option value="Select status" selected="selected">Select status</option>
+            <option value="Fully Serviceable (Clinical)" >Fully Serviceable (Clinical)</option>
+            <option value="Clinical with limitations" >Clinical with some limitations</option>
+            <option value="On Service/PMI" >On Service/PMI</option>
+            <option value="Unserviceable (not clinical)" >Unserviceable (not clinical)</option>
+          </select>
+          <br> <br>
+
+          <text>Description:</text>
+          <input type="text" placeholder="Enter Description" name="description" id="description">
+          <br> <br>
+
+          <text>Comments:</text>
+          <textarea rows="5" name="multiLineInput"></textarea> <!-- multi-line textbox for comments -->
+          <br> <br> <br> <br>
+
+          <a href="{% url 'updateStatus' %}" name="submit"><button type="submit">Submit</button></a>
+          <br>
+
+      </form>
+    </div>
+
+    <!--right-sided container showing options for status combo box -->
+    <div class="keyContainer">
+      <text> <b> Status Key: </b></text>
+      <br> <br>
+      <div id="circleClinical"></div>
+      <text>Fully Serviceable (Clinical)</text>
+      <br> <br> <br>
+      <div id="circleLimitations"></div>
+      <text>Clinical with some limitations</text>
+      <br> <br> <br>
+      <div id="circleService"></div>
+      <text>On Service / PMI</text>
+      <br> <br> <br>
+      <div id="circleUnserviceable"></div>
+      <text>Unserviceable (not clinical - i.e. ongoing fault)</text>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Machine Status</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'machineStatusStyle.css' %}">
+</head>
+
+<body>
+    <h1>Machine Status Page</h1>
+    <!-- status circle to change based on status -->
+    {% if Machine_Status == "Fully Serviceable (Clinical)" %}
+    <div class="statusCircle" style="background-color: green"></div>
+    {% elif Machine_Status == "Clinical with limitations" %}
+    <div class="statusCircle" style="background-color: orange"></div>
+    {% elif Machine_Status == "On Service/PMI" %}
+    <div class="statusCircle" style="background-color: blue"></div>
+    {% else %}
+    <div class="statusCircle" style="background-color: red"></div>
+    {% endif %}
+
+    <br><br>
+
+    <!-- information to be displayed at the top of the page, left-hand side -->
+    <div class="infoContainer">
+        <text>
+            <b>
+                Machine Name: {{Machine_Name}}
+                <br>
+                Serial No: {{Serial_No}}
+                <br>
+                S/W Version: {{SW_Version}}
+            </b>
+        </text>
+    </div>
+
+    <!-- information to be displayed at the top of the page, right-hand side -->
+    <div class="infoContainer">
+        <text>
+            <b>
+                Current Status: {{Machine_Status}}
+                <br>
+                Current Owner: {{Current_Owner}}
+            </b>
+        </text>
+        <br> <br>
+    </div>
+
+    <div class="tableBox"> <!-- scroll bar turns up if screen is too small to show all data -->
+        <table class = "handoverTable">
+            <!-- Header values -->
+            <thead>
+                <tr>
+                    <th>Start (Date/Time)</th>
+                    <th>Starting user</th>
+                    <th>Clinical status</th>
+                    <th>Description</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <!-- table rows values: -->
+            <tbody>
+            {% for row in all_rows %}
+                <tr> <!-- to be filled with data from database. Currently, dummy values -->
+                    <td>{{row.startTime}} </td>
+                    <td>{{row.startUserID}}</td>
+                    <td>{{row.Status}}</td>
+                    <td>{{row.description}}</td>
+                    <td>{{row.comments}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <br> <br>
+
+    <div class="BTNContainer">
+        <!-- buttons when clicked move to respective pages using django urls from myapp urls -->
+        <a href="{% url 'updateStatus' %}"><button type="Submit" id="add">Add New Status</button></a>
+        <a href="{% url 'logout' %}"><button type="Submit" id="logout">Logout</button></a>
+    </div>
+</body>
+
+</html>

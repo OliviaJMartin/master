@@ -1,0 +1,38 @@
+/* Login page style sheet */
+
+body {
+    margin: auto;
+    background-color: #00004d; /* dark blue */
+}
+
+.login-container {
+    width: 25%;
+    text-align: center;
+    align-items: absolute;
+    transform: translate(95%, 50%); /* centering */
+    padding: 5%;
+    background-color: white;
+    border-radius: 25px;
+    color: black;
+}
+
+button[type=submit] {
+    padding: 5px 15px;
+    background: #00004d; /* dark blue */
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius:5px;
+    font-size: 13px;
+    color: white;
+}
+
+button[type=submit]:hover {
+    background-color:rgb(72,73,75); /* grey */
+}
+
+input{
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #ccc; /* grey */
+    border-radius:4px;
+}
